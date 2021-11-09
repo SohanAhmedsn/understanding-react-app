@@ -1,10 +1,22 @@
+import { useEffect, useState } from 'react/cjs/react.development';
 import './App.css';
+import Device from './components/Device/Device';
 
 
 function App() {
+  const [steps, setSteps] = useState(0);
+  const handleIncreseSteps = () =>{
+    const newStepsCount = steps + 1;
+    setSteps(newStepsCount) 
+  }
+  useEffect(() => {
+    console.log(steps);
+  },[steps])
   return (
     <div className="App">
-      <h2>Hello</h2>
+      <h3>My Steps: {steps}</h3>
+      <button onClick={handleIncreseSteps}>Walk</button>
+      <Device name="Phone" steps={steps} price="1000"/>
     </div>
   );
 }
